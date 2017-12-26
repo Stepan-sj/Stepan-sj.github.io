@@ -1336,6 +1336,9 @@ pre .javascript .function {
   margin: 0 auto 25px;
   word-wrap: break-word;
 }
+.post-body {
+  word-wrap: break-word;
+}
 @media (max-width: 767px) {
   .posts-collapse {
     margin: 0 20px;
@@ -1824,7 +1827,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff32ff;
+  background: #b301fa;
 }
 .links-of-blogroll {
   font-size: 13px;
