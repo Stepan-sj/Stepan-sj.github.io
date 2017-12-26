@@ -1334,6 +1334,7 @@ pre .javascript .function {
 }
 .posts-expand .post-body .fancybox img {
   margin: 0 auto 25px;
+  word-wrap: break-word;
 }
 @media (max-width: 767px) {
   .posts-collapse {
@@ -1393,7 +1394,6 @@ pre .javascript .function {
 }
 .posts-collapse .post {
   margin: 30px 0;
-  word-wrap: break-word;
 }
 .posts-collapse .post-header {
   position: relative;
@@ -1824,7 +1824,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #42aa7f;
+  background: #ff32ff;
 }
 .links-of-blogroll {
   font-size: 13px;
