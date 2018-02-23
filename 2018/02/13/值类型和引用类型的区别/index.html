@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Shijie&#39;s blog">
 <meta property="og:description" content="1、js中属于值类型的数据类型为：  Sting Number boolean none undefined  1234var a=0;  var b=a;  console.log(a)//0  console.log(b)//0   上面声名a变量，并把0赋给a，其实是在内存的栈区中开辟了一个名叫a的内存空间，把0放到内存空间里。然后var b=a则是在内存中又开辟了一个空间，把a的值放入b的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-13T15:03:27.593Z">
+<meta property="og:updated_time" content="2018-02-13T15:08:07.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="值类型和引用类型的区别">
 <meta name="twitter:description" content="1、js中属于值类型的数据类型为：  Sting Number boolean none undefined  1234var a=0;  var b=a;  console.log(a)//0  console.log(b)//0   上面声名a变量，并把0赋给a，其实是在内存的栈区中开辟了一个名叫a的内存空间，把0放到内存空间里。然后var b=a则是在内存中又开辟了一个空间，把a的值放入b的">
@@ -332,9 +332,9 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;  </span><br><span class="line"><span class="keyword">var</span> b=a;  </span><br><span class="line"><span class="built_in">console</span>.log(a)<span class="comment">//0  </span></span><br><span class="line"><span class="built_in">console</span>.log(b)<span class="comment">//0</span></span><br></pre></td></tr></table></figure>
 <p>  上面声名a变量，并把0赋给a，其实是在内存的栈区中开辟了一个名叫a的内存空间，把0放到内存空间里。然后<code>var b=a</code>则是在内存中又开辟了一个空间，把a的值放入b的内存空间中。这样a和b就是两个完全独立的变量，你不影响我，我不影响你。</p>
 <p>2、引用类型：js中除了5种基本类型，其他都属于引用类型。来看一段代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];  </span><br><span class="line"><span class="keyword">var</span> b=a;  </span><br><span class="line">a.push(<span class="number">6</span>)  </span><br><span class="line"><span class="built_in">console</span>.log(a)<span class="comment">//[1,2,3,4,5,6]  </span></span><br><span class="line"><span class="built_in">console</span>.log(b)<span class="comment">//[1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
-<p>  初学js的人看到运行结果一定会很奇怪，为什么a，b的值是不同的呢？<br><br>  其实内存中不光只有栈区，还有堆区。而引用类型的值和值类型的值不同，它是存在在堆中的。上面声明a在栈区中开辟了一个内存空间，但内存空间中存放的不是[1,2,3,4,5]。那js是怎么获取a变量的值得呢?<br><br>[1,2,3,4,5]是引用类型的值，会在堆中开辟一个空间，内存会为它分配一个地址，而栈中a的内存空间存放的是这个地址，当需要访问的时候会根据地址找到堆中的值并输出。<br><br>上面代码中<code>var b=a</code>,b的内存空间中存放的是a的内容空间的地址，所以a和b的指向的地址是相同的。所以a和b引用的是同一个数组。所以只要a往数组里push一个数，b也会收到影响。</p>
-<p>##思考题##<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=&#123;<span class="attr">n</span>:<span class="number">1</span>&#125;;  </span><br><span class="line"><span class="keyword">var</span> b=a;  </span><br><span class="line">a.x=a=&#123;<span class="attr">n</span>:<span class="number">2</span>&#125;  </span><br><span class="line"><span class="built_in">console</span>.log(a.x)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];  </span><br><span class="line"><span class="keyword">var</span> b=a;  </span><br><span class="line">a.push(<span class="number">6</span>);  </span><br><span class="line"><span class="built_in">console</span>.log(a)<span class="comment">//[1,2,3,4,5,6]  </span></span><br><span class="line"><span class="built_in">console</span>.log(b)<span class="comment">//[1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+<p>  初学js的人看到运行结果一定会很奇怪，为什么a，b的值是不同的呢？<br><br>  其实内存中不光只有栈区，还有堆区。而引用类型的值和值类型的值不同，它是存在在堆中的。上面声明a在栈区中开辟了一个内存空间，但内存空间中存放的不是[1,2,3,4,5]。那js是怎么获取a变量的值得呢?<br><br>[1,2,3,4,5]是引用类型的值，会在堆中开辟一个空间，内存会为它分配一个地址，而栈中a的内存空间存放的是这个地址，当需要访问的时候会根据地址找到堆中的值并输出。<br><br>上面代码中<code>var b=a</code>,b的内存空间中存放的是a的内容空间的地址，所以a和b的指向的地址是相同的。所以a和b引用的是同一个数组。所以只要a往数组里push一个数，b也会受到影响。</p>
+<p>##思考题##<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=&#123;<span class="attr">n</span>:<span class="number">1</span>&#125;;  </span><br><span class="line"><span class="keyword">var</span> b=a;  </span><br><span class="line">a.x=a=&#123;<span class="attr">n</span>:<span class="number">2</span>&#125;;  </span><br><span class="line"><span class="built_in">console</span>.log(a.x);</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -361,6 +361,22 @@
       
       
 
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/23/同步与异步/" rel="prev" title="同步与异步">
+                同步与异步 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
       
@@ -429,7 +445,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
