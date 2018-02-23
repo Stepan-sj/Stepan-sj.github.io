@@ -88,7 +88,7 @@
 <meta property="og:description" content="Javascript是单线程的语言。这意味着js不能同时处理多条任务。这会产生一种问题，那就是如果在同步任务中处理一个耗时很长的任务时，下面的代码就不会执行，使浏览器卡住，等该任务执行完毕后才会执行以后的代码，这会大大影响用户体验。而异步就是为了解决这个问题而诞生的。我们可以把耗时很长的操作延后执行，这就叫异步操作。 setTimeout：其实在理解异步之前，我都对setTimeout有误解。来看">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/02/23/同步与异步/1.jpg">
-<meta property="og:updated_time" content="2018-02-23T13:47:19.494Z">
+<meta property="og:updated_time" content="2018-02-23T14:07:46.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步与异步">
 <meta name="twitter:description" content="Javascript是单线程的语言。这意味着js不能同时处理多条任务。这会产生一种问题，那就是如果在同步任务中处理一个耗时很长的任务时，下面的代码就不会执行，使浏览器卡住，等该任务执行完毕后才会执行以后的代码，这会大大影响用户体验。而异步就是为了解决这个问题而诞生的。我们可以把耗时很长的操作延后执行，这就叫异步操作。 setTimeout：其实在理解异步之前，我都对setTimeout有误解。来看">
@@ -325,7 +325,14 @@
       
         <p>Javascript是单线程的语言。这意味着js不能同时处理多条任务。这会产生一种问题，那就是如果在同步任务中处理一个耗时很长的任务时，<br>下面的代码就不会执行，使浏览器卡住，等该任务执行完毕后才会执行以后的代码，这会大大影响用户体验。<br>而异步就是为了解决这个问题而诞生的。我们可以把耗时很长的操作延后执行，这就叫异步操作。</p>
 <h2 id="setTimeout："><a href="#setTimeout：" class="headerlink" title="setTimeout："></a>setTimeout：</h2><p>其实在理解异步之前，我都对setTimeout有误解。来看一段代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">&#125;,<span class="number">0</span>)    </span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>);</span><br></pre></td></tr></table></figure></p>
-<p>之前我会天真的以为setTimeout的回调函数会先执行，然后才会执行后续代码，但其实不是这样：<br><img src="/2018/02/23/同步与异步/1.jpg" alt="&quot;1.jpg&quot;"></p>
+<p>之前我会天真的以为setTimeout的回调函数会先执行，然后才会执行后续代码，但其实不是这样：<br><img src="/2018/02/23/同步与异步/1.jpg" alt="&quot;1.jpg&quot;"><br>控制台会先打印2,在打印1!<br><br>为什么呢?其实setTimeout的回调函数就是一个异步任务.按照js浏览器的运行机制,先执行同步任务,在执行异步任务,这样就很好理解了把.<br><br>目前我知道的异步操作有:</p>
+<ul>
+<li>事件的回调函数</li>
+<li>setTimeout和setInterval的回调函数</li>
+<li>ajax</li>
+<li>以及各种第三方获取数据的api<br></li>
+</ul>
+<p>其实同步任务的执行顺序很简单,但异步的执行顺序就很难预测了.浏览器其实是有多个线程的:<br>主线程和异步线程.当异步任务通知异步任务可以执行回调函数时,便把回调函数推入主线程的最后等待执行~!<br><br>这就是浏览器的EventLoop机制.</p>
 
       
     </div>
